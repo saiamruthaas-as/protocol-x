@@ -1,0 +1,52 @@
+{
+  "name": "catchup-ai",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "dev:server": "tsx watch server/src/server.ts",
+    "dev:all": "concurrently -k -p \"[{name}]\" -n \"CLIENT,SERVER\" -c \"cyan,magenta\" \"vite\" \"tsx watch server/src/server.ts\"",
+    "build": "npm run build:server && npm run build:client",
+    "build:client": "tsc && vite build",
+    "build:server": "tsc -p server/tsconfig.json",
+    "lint": "tsc --noEmit && tsc -p server/tsconfig.json --noEmit",
+    "preview": "vite preview",
+    "test": "npx tsx src/test/runFullSuite.ts",
+    "test:server": "npx tsx src/test/runServerSuite.ts",
+    "test:vitest": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "cors": "^2.8.6",
+    "date-fns": "^3.6.0",
+    "dotenv": "^18.0.6",
+    "express": "^5.2.1",
+    "groq-sdk": "^1.6.0",
+    "idb": "^8.0.0",
+    "lucide-react": "^0.460.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@rollup/wasm-node": "^4.64.3",
+    "@testing-library/jest-dom": "^6.4.6",
+    "@testing-library/react": "^16.0.0",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/node": "^20.14.9",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "concurrently": "^10.0.6",
+    "fake-indexeddb": "^6.2.5",
+    "jsdom": "^24.1.0",
+    "tsx": "^4.23.15",
+    "typescript": "^5.5.3",
+    "vite": "^5.3.4",
+    "vitest": "^1.6.0"
+  },
+  "optionalDependencies": {
+    "@rollup/rollup-win32-x64-msvc": "^4.64.3"
+  }
+}
